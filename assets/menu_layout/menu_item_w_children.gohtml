@@ -1,0 +1,7 @@
+<li class="has-children"><a href="#">{{.Title}}</a>
+    <ul>
+        {{range .Children}}
+        <li><a href=".Url">{{.Title}}</a></li>
+        {{end}}
+    </ul>
+</li>

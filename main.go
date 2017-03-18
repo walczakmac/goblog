@@ -4,12 +4,18 @@ import (
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 	"database/sql"
+	"html/template"
+	"github.com/walczakmac/goblog/model"
 )
 
 var connection *sql.DB
+var menuItems *[]model.Item
 
 func init() {
 	connection = InitialiseDatabaseConnection()
+	template.FuncMap{
+		"menu": FindMenuItems(connection),
+	}
 }
 
 func main() {
